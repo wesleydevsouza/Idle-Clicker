@@ -3,17 +3,13 @@ using UnityEngine.UI;
 
 public class UpgradeClick : MonoBehaviour
 {
+    void UpgradeProdClick()
+    {
+        if (GameController.gameController.gold >= GameController.gameController.qtdManualUpg)
+        {
+            GameController.gameController.gold -= GameController.gameController.qtdManualUpg;
+            UpgradePrice();
 
-    public Button btnUpClick;
-    public Text txtClick;
-    public int qtdUpgrade;
-    int priceUpgrade;
-
-    void UpgradeProdClick() {
-        if (Clicker.InstClicker.gold >= priceUpgrade) {
-            Clicker.InstClicker.gold -= priceUpgrade;
-            UpgradePrice(); 
-             
         }
 
         {
@@ -23,22 +19,22 @@ public class UpgradeClick : MonoBehaviour
         }
     }
 
-    void UpgradePrice() {
-        priceUpgrade = qtdUpgrade * priceUpgrade;
-        qtdUpgrade++;
-    } 
-
-
-    
-    void Start()
+    void UpgradePrice()
     {
-        priceUpgrade = qtdUpgrade * priceUpgrade;
-        btnUpClick.onClick.AddListener(UpgradeProdClick);
+        GameController.gameController.qtdManualUpg = GameController.gameController.qtdManualUpg * GameController.gameController.qtdManualUpg;
+        GameController.gameController.qtdManualUpg++;
     }
 
-    // Update is called once per frame
+
+
+    void Start()
+    {
+        GameController.gameController.qtdManualUpg = GameController.gameController.qtdManualUpg * GameController.gameController.qtdManualUpg;
+        GameController.gameController.btnManualUpg.onClick.AddListener(UpgradeProdClick);
+    }
+
     void Update()
     {
-        txtClick.text = "Upgrade Click " + priceUpgrade + "$";
+        GameController.gameController.txtManualUpg.text = "Upgrade Click " + GameController.gameController.qtdManualUpg + "$";
     }
 }

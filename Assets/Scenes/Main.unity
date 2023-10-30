@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 91114525}
   - component: {fileID: 91114524}
   m_Layer: 5
-  m_Name: txtClick
+  m_Name: txtManualClick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -350,11 +350,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 416d8d2ecaaeaf6489e294212d798275, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gold: 0
-  production: 1
-  multClick: 1
-  button: {fileID: 184505142}
-  Result: {fileID: 1998659731}
 --- !u!114 &184505144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -454,12 +449,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d548ac964a3dba42a207f652fc1d6d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  qtdAutoUpgrade: 1
-  prodAuto: 1
-  priceAutoUpg: 50
-  isAuto: 0
-  btnAuto: {fileID: 583023520}
-  txtAuto: {fileID: 601551157}
 --- !u!114 &583023520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -676,9 +665,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 394ca486342edfb4996dc1179e905a59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  btnUpClick: {fileID: 583438039}
-  txtClick: {fileID: 91114524}
-  qtdUpgrade: 1
 --- !u!1 &601551155
 GameObject:
   m_ObjectHideFlags: 0
@@ -767,7 +753,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 698933419}
-  - component: {fileID: 698933418}
+  - component: {fileID: 698933420}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -775,28 +761,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &698933418
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 698933417}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5af2f2e10dca06409b3bd3a8aaa74e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Result: {fileID: 1998659731}
-  AIChoice: {fileID: 0}
-  val: 0
-  Choices:
-  - Rock
-  - Paper
-  - Sci
-  Rock: {fileID: 21300000, guid: 88832cccff0133e469fbf8d35aba63c2, type: 3}
-  Paper: {fileID: 21300000, guid: c089f6f34902a964a98bd7f6f5cc0d79, type: 3}
-  Sci: {fileID: 21300000, guid: 22ce8b870041a234e9935b654f0c511c, type: 3}
 --- !u!4 &698933419
 Transform:
   m_ObjectHideFlags: 0
@@ -812,6 +776,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &698933420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 698933417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5929d52a7bfb22b4eb7e50472960c479, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prodAuto: 1
+  qtdAutoUpgrade: 1
+  priceAutoUpg: 10
+  isAuto: 0
+  prodManual: 1
+  qtdManualUpg: 1
+  priceManualUpg: 20
+  btnClick: {fileID: 184505142}
+  btnAuto: {fileID: 583023520}
+  btnManualUpg: {fileID: 583438039}
+  txtManualUpg: {fileID: 91114524}
+  txtAuto: {fileID: 601551157}
+  Result: {fileID: 1998659731}
+  gold: 0
 --- !u!1 &1090164282
 GameObject:
   m_ObjectHideFlags: 0

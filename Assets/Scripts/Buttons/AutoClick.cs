@@ -4,89 +4,67 @@ using UnityEngine.UI;
 public class AutoClick : MonoBehaviour
 {
 
-    public int qtdAutoUpgrade, prodAuto, priceAutoUpg;
-    public bool isAuto;
-    public Button btnAuto;
-    public Text txtAuto;
-    
+
     void AutoIncrement()
     {
-
-        if (isAuto == true)
-        {
-            Clicker.InstClicker.gold = Clicker.InstClicker.gold + prodAuto;
-
-        }
+        GameController.gameController.gold = GameController.gameController.gold + (GameController.gameController.prodAuto * GameController.gameController.qtdAutoUpgrade);
 
     }
-    
-    void EnableAuto()   
+
+    void EnableAuto()
     {
-        if (isAuto == true)
-        {
-            //Func upgrade auto click
-            
-            if (Clicker.InstClicker.gold >= priceAutoUpg)
-            {
-                Clicker.InstClicker.gold -= priceAutoUpg;
-                //PriceUpgrade();
+        if (GameController.gameController.isAuto == false) {
+            //Buy Auto Prod
+            if (GameController.gameController.gold >= GameController.gameController.priceAutoUpg) {
+                GameController.gameController.gold -= GameController.gameController.priceAutoUpg;
+                GameController.gameController.isAuto = true;
+                InvokeRepeating("AutoIncrement", 1f, 1f);
+                PriceUpgrade();
 
-                txtAuto.text = "Upgrade Auto " + priceAutoUpg + "$";
-
-            }
-            
-            {
+            } else {
                 Debug.Log("Gold insuficiente");
                 return;
 
             }
 
-        }
-        else
-        {
-            if (Clicker.InstClicker.gold >= priceAutoUpg)
-            {
-                Clicker.InstClicker.gold -= priceAutoUpg;
-                isAuto = true;
+        } else {
+            //Upgrade Auto
+            if (GameController.gameController.gold >= GameController.gameController.priceAutoUpg) {
+                GameController.gameController.gold -= GameController.gameController.priceAutoUpg;
 
-               // PriceUpgrade();
+                PriceUpgrade();
 
+                GameController.gameController.txtAuto.text = "Upgrade Auto " + GameController.gameController.priceAutoUpg + "$";
 
-                //btnAuto.interactable = false;
-
-            }
-            else
-            {
+            } else {
                 Debug.Log("Gold insuficiente");
                 return;
 
             }
+
         }
 
     }
 
     void PriceUpgrade()
     {
-       
-        priceAutoUpg = priceAutoUpg * qtdAutoUpgrade;
-        qtdAutoUpgrade++;
-
-        Debug.Log("Qtd Upgrade: " + qtdAutoUpgrade + "Preço: " + priceAutoUpg);
+        GameController.gameController.qtdAutoUpgrade++;
+        GameController.gameController.priceAutoUpg = GameController.gameController.priceAutoUpg * GameController.gameController.qtdAutoUpgrade;
+        
     }
+    
+    void Start() {
 
-    void Start()
-    {
-        btnAuto.onClick.AddListener(EnableAuto);
-        InvokeRepeating("AutoIncrement", 1f, 1f);
+        //Buy Auto
+        GameController.gameController.btnAuto.onClick.AddListener(EnableAuto);
 
-        Debug.Log("Preço: " + priceAutoUpg);
-
+       
     }
 
 
     void Update()
     {
-        txtAuto.text = "Upgrade Auto " + priceAutoUpg + "$";
+        GameController.gameController.txtAuto.text = "Upgrade Auto " + GameController.gameController.priceAutoUpg + "$";
     }
 
 }

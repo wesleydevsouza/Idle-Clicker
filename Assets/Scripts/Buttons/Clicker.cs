@@ -3,45 +3,27 @@ using UnityEngine.UI;
 
 public class Clicker : MonoBehaviour
 {
-    public static Clicker InstClicker;
-
-    /// <summary>
-    /// TODO Editar as variaveis no botão de clic, gold 0, prdo e mult = 
-    /// </summary>
-
-    [Header("Var Controle")]
-    public int gold, production, multClick;
-
-    public Button button;
-    public Text Result;
-
     void ManualIncrement()
     {
-        if (gold <= 0) {
-            gold = production;
+        if (GameController.gameController.gold <= 0) {
+            GameController.gameController.gold++;
+
+        } else {
+            GameController.gameController.gold = GameController.gameController.gold + (GameController.gameController.prodManual * GameController.gameController.qtdManualUpg);
+            Debug.Log("Prod Manual: " + GameController.gameController.prodManual + " Qtd Up: " + GameController.gameController.qtdManualUpg);
         }
-        else {
-            
-            gold = gold + (production * multClick);
-        }
-        
-        Debug.Log(gold);
+
+        Debug.Log(GameController.gameController.gold);
     }
 
     void TextUpdate()
     {
-        Result.text = gold.ToString();
-    }
-
-    private void Awake()
-    {
-        InstClicker = this;
+        GameController.gameController.Result.text = GameController.gameController.gold.ToString();
     }
 
     void Start()
     {
-        button.onClick.AddListener(ManualIncrement);
-
+        GameController.gameController.btnClick.onClick.AddListener(ManualIncrement);
 
     }
 

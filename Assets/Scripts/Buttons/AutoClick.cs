@@ -7,7 +7,15 @@ public class AutoClick : MonoBehaviour
 
     void AutoIncrement()
     {
-        GameController.gameController.gold = GameController.gameController.gold + (GameController.gameController.prodAuto * GameController.gameController.qtdAutoUpgrade);
+        if (GameController.gameController.qtdAutoUpgrade < 1) {
+            GameController.gameController.gold = GameController.gameController.gold + 1;
+            Debug.Log("Ta no if");
+
+
+        } else {
+            GameController.gameController.gold = GameController.gameController.gold + (GameController.gameController.prodAuto * GameController.gameController.qtdAutoUpgrade);
+            Debug.Log("Ta no else");
+        }
 
     }
 

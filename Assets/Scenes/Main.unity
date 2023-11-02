@@ -789,7 +789,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prodAuto: 1
-  qtdAutoUpgrade: 1
+  qtdAutoUpgrade: 0
   priceAutoUpg: 10
   isAuto: 0
   prodManual: 1
